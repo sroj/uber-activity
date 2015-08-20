@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/uber_row_element_icon"
+        android:layout_width="32dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/padding_tiny"
+        android:gravity="left|center_vertical"
+        android:scaleType="centerInside"
+        tools:src="@drawable/mono_uberx" />
+
+    <TextView
+        android:id="@+id/uber_row_element_product_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/padding_tiny"
+        android:layout_weight="3"
+        android:ellipsize="end"
+        android:gravity="left|center_vertical"
+        android:singleLine="true"
+        android:textColor="@color/connect_text_black"
+        android:textSize="@dimen/text_size_large"
+        android:textStyle="bold"
+        tools:text="uberTAXI" />
+
+    <TextView
+        android:id="@+id/uber_row_element_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/padding_tiny"
+        android:layout_weight="1"
+        android:gravity="right|center_vertical"
+        android:textSize="@dimen/text_size_medium"
+        tools:text="3 mins" />
+
+    <TextView
+        android:id="@+id/uber_row_element_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/padding_tiny"
+        android:layout_weight="1"
+        android:gravity="right|center_vertical"
+        android:textSize="@dimen/text_size_large"
+        tools:text="$19-25" />
+
+</LinearLayout>

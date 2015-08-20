@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Request Uber</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="request_uber">Request Uber</string>
+    <string name="requesting_uber">Requesting Uber!</string>
+
+    <string name="no_uber">Sorry! Apparently there are no rides nearby</string>
+    <string name="error_no_connectivity">No connectivity detected: check your mobile data or WiFi connectivity and try again.</string>
+
+    <string name="title_activity_uber_ride">Get a ride</string>
+</resources>
