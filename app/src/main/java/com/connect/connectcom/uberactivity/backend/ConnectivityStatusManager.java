@@ -1,4 +1,4 @@
-package com.connect.connectcom.uberactivity;
+package com.connect.connectcom.uberactivity.backend;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -23,9 +23,7 @@ public class ConnectivityStatusManager {
 
     public void initConnectivityManager(Context context) {
         //      this.context = context;
-        connectivityManager = (ConnectivityManager) context.getSystemService(
-                Context.CONNECTIVITY_SERVICE
-        );
+        connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 
     public boolean isConnected() {
@@ -37,8 +35,7 @@ public class ConnectivityStatusManager {
         }
     }
 
-    public static class NoConnectivityException
-            extends IOException {
+    public static class NoConnectivityException extends IOException {
         public NoConnectivityException(String sMessage) {
             super(sMessage);
         }

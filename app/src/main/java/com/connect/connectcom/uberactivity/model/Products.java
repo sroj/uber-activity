@@ -6,8 +6,15 @@ import java.util.List;
 
 public class Products {
 
-    @SerializedName("products") private List<Product> products;
+    @SerializedName("products")
+    private List<Product> products;
     private boolean ok = true;
+
+    public static Products buildErrorObject() {
+        Products products = new Products();
+        products.ok = false;
+        return products;
+    }
 
     public List<Product> getProducts() {
         return products;
@@ -24,13 +31,7 @@ public class Products {
     @Override
     public String toString() {
         return "Products{" +
-               "products=" + products +
-               '}';
-    }
-
-    public static Products buildErrorObject() {
-        Products products = new Products();
-        products.ok = false;
-        return products;
+                "products=" + products +
+                '}';
     }
 }

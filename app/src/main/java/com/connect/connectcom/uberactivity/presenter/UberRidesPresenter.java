@@ -1,44 +1,83 @@
 package com.connect.connectcom.uberactivity.presenter;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.util.AttributeSet;
+import android.widget.LinearLayout;
+
 import com.connect.connectcom.uberactivity.model.UberRide;
 
 import java.util.List;
+
+import mortar.ViewPresenter;
 
 /**
  * Created by Simon on 8/18/2015.
  */
 
-public interface UberRidesPresenter {
-    void onRideSelected(UberRide uberRide);
+public abstract class UberRidesPresenter extends ViewPresenter<UberRidesPresenter.UberRidesView> {
+    public abstract void onRideSelected(UberRide uberRide);
 
-    void loadUberRides(double dropOffLatitude, double dropOffLongitude);
+    public abstract void loadUberRides(double dropOffLatitude, double dropOffLongitude);
 
-    void onMapReady(double dropOffLatitude, double dropOffLongitude);
-
-    void setView(UberRidesView view);
+    public abstract void onMapReady(double dropOffLatitude, double dropOffLongitude);
 
     /**
      * This is the view the presenter will interact with
      */
-    interface UberRidesView {
+    public abstract static class UberRidesView extends LinearLayout {
 
-        void showNoConnectivity();
+        public UberRidesView(Context context) {
+            super(context);
+        }
 
-        void showNoRides();
+        public UberRidesView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+        }
 
-        void showProgress();
+        public UberRidesView(Context context, AttributeSet attrs, int defStyleAttr) {
+            super(context, attrs, defStyleAttr);
+        }
 
-        void showRides(List<UberRide> uberFusedDataItems);
+        public abstract void showNoConnectivity();
 
-        void launchUberActivity(UberRide uberRide);
+        public abstract void showNoRides();
 
-        void drawPickupMarker(double latitude, double longitude);
+        public abstract void showProgress();
 
-        void drawRoute(double pickupLatitude,
-                       double pickupLongitude,
-                       double dropOffLatitude,
-                       double dropOffLongitude);
+        public abstract void showRides(List<UberRide> uberFusedDataItems);
 
-        void drawDropOffMarker(double dropOffLatitude, double dropOffLongitude);
+        public abstract void launchUberActivity(UberRide uberRide);
+
+        public abstract void drawPickupMarker(double latitude, double longitude);
+
+        public abstract void drawRoute(double pickupLatitude,
+                                       double pickupLongitude,
+                                       double dropOffLatitude,
+                                       double dropOffLongitude);
+
+        public abstract void drawDropOffMarker(double dropOffLatitude, double dropOffLongitude);
+
+        public abstract void onCreate(Bundle savedInstanceState);
+
+        public abstract void onResume();
+
+        public abstract void onPause();
+
+        public abstract void onDestroy();
+
+        public abstract void onSaveInstanceState(Bundle outState);
+
+        public abstract void onLowMemory();
+
+        public interface UberRidesViewContainer {
+            double getDestLatitude();
+
+            double getDestLongitude();
+
+            void onUberViewAttachedToWindow(UberRidesView uberRidesView);
+
+            void onUberViewDetachedFromWindow();
+        }
     }
 }

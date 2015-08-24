@@ -57,18 +57,12 @@ public class Steps {
 
             if (!step.isNull("start_location")) {
                 JSONObject pos = step.getJSONObject("start_location");
-                start = new LatLng(
-                    pos.getDouble("lat"),
-                    pos.getDouble("lng")
-                );
+                start = new LatLng(pos.getDouble("lat"), pos.getDouble("lng"));
             }
 
             if (!step.isNull("end_location")) {
                 JSONObject pos = step.getJSONObject("end_location");
-                end = new LatLng(
-                    pos.getDouble("lat"),
-                    pos.getDouble("lng")
-                );
+                end = new LatLng(pos.getDouble("lat"), pos.getDouble("lng"));
             }
 
             if (!step.isNull("duration")) {
@@ -88,8 +82,7 @@ public class Steps {
             }
 
             instructions = step.getString("html_instructions");
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
@@ -105,9 +98,7 @@ public class Steps {
                 result |= (b & 0x1f) << shift;
                 shift += 5;
             } while (b >= 0x20);
-            int dlat = ((result & 1) != 0
-                        ? ~(result >> 1)
-                        : (result >> 1));
+            int dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
             lat += dlat;
             shift = 0;
             result = 0;
@@ -116,15 +107,10 @@ public class Steps {
                 result |= (b & 0x1f) << shift;
                 shift += 5;
             } while (b >= 0x20);
-            int dlng = ((result & 1) != 0
-                        ? ~(result >> 1)
-                        : (result >> 1));
+            int dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
             lng += dlng;
 
-            LatLng position = new LatLng(
-                (double)lat / 1E5,
-                (double)lng / 1E5
-            );
+            LatLng position = new LatLng((double) lat / 1E5, (double) lng / 1E5);
             //            Log.d("Lat", String.valueOf(position.latitude));
             //            Log.d("Lng", String.valueOf(position.longitude));
             stepLine.add(position);

@@ -21,34 +21,27 @@ import org.apache.http.util.EntityUtils;
 import java.util.ArrayList;
 
 public class Navigator {
-    @SuppressWarnings("unused") private Context context;
+    @SuppressWarnings("unused")
+    private Context context;
     private LatLng startPosition, endPosition;
     private String mode;
     private GoogleMap map;
     private Directions directions;
-    private int   pathColor       = Color.parseColor("#21b6d7"); // Connect blue
-    private int   pathBorderColor = Color.TRANSPARENT;
-    private int   secondPath      = Color.CYAN;
-    private int   thirdPath       = Color.RED;
-    private float pathWidth       = 14;
+    private int pathColor = Color.parseColor("#21b6d7"); // Connect blue
+    private int pathBorderColor = Color.TRANSPARENT;
+    private int secondPath = Color.CYAN;
+    private int thirdPath = Color.RED;
+    private float pathWidth = 14;
     private OnPathSetListener listener;
     private boolean alternatives = false;
-    private long   arrivalTime;
+    private long arrivalTime;
     private String avoid;
     private ArrayList<Polyline> lines = new ArrayList<Polyline>();
 
-    public Navigator(
-        GoogleMap map,
-        LatLng startLocation,
-        LatLng endLocation
-    ) {
+    public Navigator(GoogleMap map, LatLng startLocation, LatLng endLocation) {
         this.startPosition = startLocation;
         this.endPosition = endLocation;
         this.map = map;
-    }
-
-    public interface OnPathSetListener {
-        public void onPathSetListener(Directions directions);
     }
 
     public void setOnPathSetListener(OnPathSetListener listener) {
@@ -72,10 +65,8 @@ public class Navigator {
     /**
      * Get's driving directions from the starting location to the ending location
      *
-     * @param showDialog
-     *     Set to true if you want to show a ProgressDialog while retrieving directions
-     * @param findAlternatives
-     *     give alternative routes to the destination
+     * @param showDialog       Set to true if you want to show a ProgressDialog while retrieving directions
+     * @param findAlternatives give alternative routes to the destination
      */
     public void findDirections(boolean findAlternatives) {
         this.alternatives = findAlternatives;
@@ -86,17 +77,11 @@ public class Navigator {
      * Sets the type of direction you want (driving,walking,biking or mass transit). This MUST be called before getting
      * the directions If using "transit" mode you must provide an arrival time
      *
-     * @param mode
-     *     The type of directions you want (driving,walking,biking or mass transit)
-     * @param arrivalTime
-     *     If selected mode it "transit" you must provide and arrival time (milliseconds since January 1, 1970 UTC). If
-     *     arrival time is not given the current time is given and may return unexpected results.
+     * @param mode        The type of directions you want (driving,walking,biking or mass transit)
+     * @param arrivalTime If selected mode it "transit" you must provide and arrival time (milliseconds since January 1, 1970 UTC). If
+     *                    arrival time is not given the current time is given and may return unexpected results.
      */
-    public void setMode(
-        int mode,
-        long arrivalTime,
-        int avoid
-    ) {
+    public void setMode(int mode, long arrivalTime, int avoid) {
         switch (mode) {
 
             case 0:
@@ -141,50 +126,32 @@ public class Navigator {
     /**
      * Change the color of the path line, must be called before calling findDirections().
      *
-     * @param firstPath
-     *     Color of the first line, default color is blue.
-     * @param secondPath
-     *     Color of the second line, default color is cyan
-     * @param thirdPath
-     *     Color of the third line, default color is red
+     * @param firstPath  Color of the first line, default color is blue.
+     * @param secondPath Color of the second line, default color is cyan
+     * @param thirdPath  Color of the third line, default color is red
      */
-    public void setPathColor(
-        int firstPath,
-        int secondPath,
-        int thirdPath
-    ) {
+    public void setPathColor(int firstPath, int secondPath, int thirdPath) {
         pathColor = firstPath;
     }
 
-    public void setPathBorderColor(
-        int firstPath,
-        int secondPath,
-        int thirdPath
-    ) {
+    public void setPathBorderColor(int firstPath, int secondPath, int thirdPath) {
         pathBorderColor = firstPath;
     }
 
     /**
      * Change the width of the path line
      *
-     * @param width
-     *     Width of the line, default width is 3
+     * @param width Width of the line, default width is 3
      */
     public void setPathLineWidth(float width) {
         pathWidth = width;
     }
 
-    private Polyline showPath(
-        Route route,
-        int color
-    ) {
+    private Polyline showPath(Route route, int color) {
         return map.addPolyline(new PolylineOptions().addAll(route.getPath()).color(color).width(pathWidth));
     }
 
-    private Polyline showBorderPath(
-        Route route,
-        int color
-    ) {
+    private Polyline showBorderPath(Route route, int color) {
         return map.addPolyline(new PolylineOptions().addAll(route.getPath()).color(color).width(pathWidth + 12));
     }
 
@@ -192,8 +159,11 @@ public class Navigator {
         return lines;
     }
 
-    private class PathCreator
-        extends AsyncTask<Void, Void, Directions> {
+    public interface OnPathSetListener {
+        public void onPathSetListener(Directions directions);
+    }
+
+    private class PathCreator extends AsyncTask<Void, Void, Directions> {
 
         @Override
         protected Directions doInBackground(Void... params) {
@@ -201,16 +171,14 @@ public class Navigator {
                 mode = "driving";
             }
 
-            String url =
-                "http://maps.googleapis.com/maps/api/directions/json?" + "origin=" + startPosition.latitude + "," +
-                startPosition.longitude + "&destination=" + endPosition.latitude + "," + endPosition.longitude +
-                "&sensor=false&units=metric&mode=" + mode + "&alternatives=" + String.valueOf(alternatives);
+            String url = "http://maps.googleapis.com/maps/api/directions/json?" + "origin=" + startPosition.latitude + "," +
+                    startPosition.longitude + "&destination=" + endPosition.latitude + "," + endPosition.longitude +
+                    "&sensor=false&units=metric&mode=" + mode + "&alternatives=" + String.valueOf(alternatives);
 
             if (mode.equals("transit")) {
                 if (arrivalTime > 0) {
                     url += url + "&arrival_time=" + arrivalTime;
-                }
-                else {
+                } else {
                     url += url + "&departure_time=" + System.currentTimeMillis();
                 }
             }
@@ -223,10 +191,7 @@ public class Navigator {
                 HttpClient httpClient = new DefaultHttpClient();
                 HttpContext localContext = new BasicHttpContext();
                 HttpPost httpPost = new HttpPost(url);
-                HttpResponse response = httpClient.execute(
-                    httpPost,
-                    localContext
-                );
+                HttpResponse response = httpClient.execute(httpPost, localContext);
 
                 if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 
@@ -235,8 +200,7 @@ public class Navigator {
                 }
 
                 return null;
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return null;
@@ -250,46 +214,14 @@ public class Navigator {
                 for (int i = 0; i < directions.getRoutes().size(); i++) {
                     Route r = directions.getRoutes().get(i);
                     if (i == 0) {
-                        lines.add(
-                            showBorderPath(
-                                r,
-                                pathBorderColor
-                            )
-                        );
-                        lines.add(
-                            showPath(
-                                r,
-                                pathColor
-                            )
-                        );
-                    }
-                    else if (i == 1) {
-                        lines.add(
-                            showBorderPath(
-                                r,
-                                pathBorderColor
-                            )
-                        );
-                        lines.add(
-                            showPath(
-                                r,
-                                secondPath
-                            )
-                        );
-                    }
-                    else if (i == 3) {
-                        lines.add(
-                            showBorderPath(
-                                r,
-                                pathBorderColor
-                            )
-                        );
-                        lines.add(
-                            showPath(
-                                r,
-                                thirdPath
-                            )
-                        );
+                        lines.add(showBorderPath(r, pathBorderColor));
+                        lines.add(showPath(r, pathColor));
+                    } else if (i == 1) {
+                        lines.add(showBorderPath(r, pathBorderColor));
+                        lines.add(showPath(r, secondPath));
+                    } else if (i == 3) {
+                        lines.add(showBorderPath(r, pathBorderColor));
+                        lines.add(showPath(r, thirdPath));
                     }
                 }
 

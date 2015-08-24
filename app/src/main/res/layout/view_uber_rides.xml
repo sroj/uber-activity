@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.connect.connectcom.uberactivity.view.UberRidesViewImpl xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/uber_rides_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.connect.connectcom.activities.UberRideFragment">
+
+        <!-- To be shown while the activity is doing the initial remote calls -->
+        <ProgressBar
+            android:id="@+id/fragment_uber_ride_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            tools:visibility="gone" />
+
+        <!-- This is the main layout to be shown when all network data has been fetched -->
+        <LinearLayout
+            android:id="@+id/fragment_uber_ride_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <view
+                android:id="@+id/fragment_uber_ride_map_view"
+                class="com.google.android.gms.maps.MapView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4" />
+
+            <ListView
+                android:id="@+id/fragment_uber_ride_uber_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3" />
+        </LinearLayout>
+
+        <!--  Empty state, no Uber products in this location -->
+        <TextView
+            android:id="@+id/fragment_uber_ride_empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/no_uber"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/fragment_uber_ride_no_connectivity_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/error_no_connectivity"
+            android:visibility="gone" />
+    </RelativeLayout>
+</com.connect.connectcom.uberactivity.view.UberRidesViewImpl>

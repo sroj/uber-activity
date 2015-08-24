@@ -4,19 +4,26 @@ import com.google.gson.annotations.SerializedName;
 
 public class Price {
 
-    @SerializedName("product_id") private String productId;
+    @SerializedName("product_id")
+    private String productId;
 
-    @SerializedName("currency_code") private String currencyCode;//TODO: parse to java.util.Currency
+    @SerializedName("currency_code")
+    private String currencyCode;//TODO: parse to java.util.Currency
 
-    @SerializedName("display_name") private String displayName;
+    @SerializedName("display_name")
+    private String displayName;
 
-    @SerializedName("estimate") private String estimate;
+    @SerializedName("estimate")
+    private String estimate;
 
-    @SerializedName("low_estimate") private int lowEstimate;
+    @SerializedName("low_estimate")
+    private int lowEstimate;
 
-    @SerializedName("high_estimate") private int highEstimate;
+    @SerializedName("high_estimate")
+    private int highEstimate;
 
-    @SerializedName("surge_multiplier") private float surgeMultiplier;
+    @SerializedName("surge_multiplier")
+    private float surgeMultiplier;
 
     public String getProductId() {
         return productId;
@@ -77,13 +84,13 @@ public class Price {
     @Override
     public String toString() {
         return "Price{" +
-               "productId='" + productId + '\'' +
-               ", currencyCode='" + currencyCode + '\'' +
-               ", displayName='" + displayName + '\'' +
-               ", estimate='" + estimate + '\'' +
-               ", lowEstimate=" + lowEstimate +
-               ", highEstimate=" + highEstimate +
-               ", surgeMultiplier=" + surgeMultiplier +
-               '}';
+                "productId='" + productId + '\'' +
+                ", currencyCode='" + currencyCode + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", estimate='" + estimate + '\'' +
+                ", lowEstimate=" + lowEstimate +
+                ", highEstimate=" + highEstimate +
+                ", surgeMultiplier=" + surgeMultiplier +
+                '}';
     }
 }

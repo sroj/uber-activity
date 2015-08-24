@@ -3,6 +3,8 @@ package com.connect.connectcom.uberactivity;
 import android.os.Build;
 import android.view.View;
 
+import com.connect.connectcom.uberactivity.android.activity.MainActivity;
+
 import junit.framework.Assert;
 
 import org.junit.Test;

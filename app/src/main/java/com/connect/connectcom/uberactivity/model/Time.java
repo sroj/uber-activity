@@ -4,11 +4,14 @@ import com.google.gson.annotations.SerializedName;
 
 public class Time {
 
-    @SerializedName("product_id") private String productId;
+    @SerializedName("product_id")
+    private String productId;
 
-    @SerializedName("display_name") private String displayName;
+    @SerializedName("display_name")
+    private String displayName;
 
-    @SerializedName("estimate") private int estimate;
+    @SerializedName("estimate")
+    private int estimate;
 
     public String getProductId() {
         return productId;
@@ -37,9 +40,9 @@ public class Time {
     @Override
     public String toString() {
         return "Time{" +
-               "productId='" + productId + '\'' +
-               ", displayName='" + displayName + '\'' +
-               ", estimate=" + estimate +
-               '}';
+                "productId='" + productId + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", estimate=" + estimate +
+                '}';
     }
 }

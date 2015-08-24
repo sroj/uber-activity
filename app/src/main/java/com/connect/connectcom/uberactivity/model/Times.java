@@ -6,8 +6,15 @@ import java.util.List;
 
 public class Times {
 
-    @SerializedName("times") private List<Time> times;
+    @SerializedName("times")
+    private List<Time> times;
     private boolean ok = true;
+
+    public static Times buildErrorObject() {
+        Times times = new Times();
+        times.ok = false;
+        return times;
+    }
 
     public List<Time> getTimes() {
         return times;
@@ -24,13 +31,7 @@ public class Times {
     @Override
     public String toString() {
         return "Times{" +
-               "times=" + times +
-               '}';
-    }
-
-    public static Times buildErrorObject() {
-        Times times = new Times();
-        times.ok = false;
-        return times;
+                "times=" + times +
+                '}';
     }
 }

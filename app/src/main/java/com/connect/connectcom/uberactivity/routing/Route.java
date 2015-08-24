@@ -62,19 +62,13 @@ public class Route {
 
                 for (int i = 0; i < pos.length(); i++) {
                     JSONObject obj = pos.getJSONObject(i);
-                    startLoc = new LatLng(
-                        obj.getDouble("lat"),
-                        obj.getDouble("lng")
-                    );
+                    startLoc = new LatLng(obj.getDouble("lat"), obj.getDouble("lng"));
                 }
             }
 
             if (!obj3.isNull("end_location")) {
                 JSONObject pos = obj3.getJSONObject("end_location");
-                endLoc = new LatLng(
-                    pos.getDouble("lat"),
-                    pos.getDouble("lng")
-                );
+                endLoc = new LatLng(pos.getDouble("lat"), pos.getDouble("lng"));
 
             }
 
@@ -85,25 +79,16 @@ public class Route {
                 LatLng northEast = null;
                 if (!pos.isNull("southwest")) {
                     JSONObject obj2 = pos.getJSONObject("southwest");
-                    southWest = new LatLng(
-                        obj2.getDouble("lat"),
-                        obj2.getDouble("lng")
-                    );
+                    southWest = new LatLng(obj2.getDouble("lat"), obj2.getDouble("lng"));
                 }
 
                 if (!pos.isNull("northeast")) {
                     JSONObject obj2 = pos.getJSONObject("northeast");
-                    northEast = new LatLng(
-                        obj2.getDouble("lat"),
-                        obj2.getDouble("lng")
-                    );
+                    northEast = new LatLng(obj2.getDouble("lat"), obj2.getDouble("lng"));
                 }
 
                 if (southWest != null && northEast != null) {
-                    this.bounds = new LatLngBounds(
-                        southWest,
-                        northEast
-                    );
+                    this.bounds = new LatLngBounds(southWest, northEast);
                 }
 
             }
@@ -114,8 +99,7 @@ public class Route {
                 }
             }
 
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 

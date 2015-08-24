@@ -3,10 +3,10 @@ package com.connect.connectcom.uberactivity.presenter;
 import android.location.Location;
 import android.os.Build;
 
-import com.connect.connectcom.uberactivity.BaseActivityModule;
+import com.connect.connectcom.uberactivity.module.BaseActivityModule;
 import com.connect.connectcom.uberactivity.BuildConfig;
-import com.connect.connectcom.uberactivity.FusedLocationManager;
-import com.connect.connectcom.uberactivity.UberAPI;
+import com.connect.connectcom.uberactivity.location.FusedLocationManager;
+import com.connect.connectcom.uberactivity.backend.UberAPI;
 import com.connect.connectcom.uberactivity.model.UberRide;
 
 import org.junit.Before;
@@ -51,7 +51,7 @@ public class UberRidesPresenterTest {
 
         UberRidesPresenter.UberRidesView uberRidesView = Mockito.mock(UberRidesPresenter.UberRidesView.class);
         UberRide uberRide = new UberRide();
-        uberRidesPresenter.setView(uberRidesView);
+        uberRidesPresenter.takeView(uberRidesView);
 
         uberRidesPresenter.onRideSelected(uberRide);
 
@@ -70,7 +70,7 @@ public class UberRidesPresenterTest {
         Mockito.when(fusedLocationManager.getLastKnownLocationObservable()).thenReturn(rx.Observable.<Location>just(null));
 
         UberRidesPresenter.UberRidesView uberRidesView = Mockito.mock(UberRidesPresenter.UberRidesView.class);
-        uberRidesPresenter.setView(uberRidesView);
+        uberRidesPresenter.takeView(uberRidesView);
 
         uberRidesPresenter.onMapReady(10, 20);
 

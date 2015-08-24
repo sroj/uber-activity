@@ -11,14 +11,6 @@ public class Directions {
     private ArrayList<Route> routes = new ArrayList<Route>();
     private String directions;
 
-    public enum DrivingMode {
-        DRIVING, MASS_TRANSIT, BYCICLE, WALKING
-    }
-
-    public enum Avoid {
-        TOLLS, HIGHWAYS, NONE
-    }
-
     public Directions(String directions) {
         this.directions = directions;
 
@@ -42,14 +34,21 @@ public class Directions {
                 }
             }
 
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
     public ArrayList<Route> getRoutes() {
         return routes;
+    }
+
+    public enum DrivingMode {
+        DRIVING, MASS_TRANSIT, BYCICLE, WALKING
+    }
+
+    public enum Avoid {
+        TOLLS, HIGHWAYS, NONE
     }
 
 }

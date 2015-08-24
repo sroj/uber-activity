@@ -4,15 +4,20 @@ import com.google.gson.annotations.SerializedName;
 
 public class Product {
 
-    @SerializedName("product_id") private String productId;
+    @SerializedName("product_id")
+    private String productId;
 
-    @SerializedName("description") private String description;
+    @SerializedName("description")
+    private String description;
 
-    @SerializedName("display_name") private String displayName;
+    @SerializedName("display_name")
+    private String displayName;
 
-    @SerializedName("capacity") private int capacity;
+    @SerializedName("capacity")
+    private int capacity;
 
-    @SerializedName("image") private String image;
+    @SerializedName("image")
+    private String image;
 
     public String getProductId() {
         return productId;
@@ -57,11 +62,11 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-               "productId='" + productId + '\'' +
-               ", description='" + description + '\'' +
-               ", displayName='" + displayName + '\'' +
-               ", capacity=" + capacity +
-               ", image='" + image + '\'' +
-               '}';
+                "productId='" + productId + '\'' +
+                ", description='" + description + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", capacity=" + capacity +
+                ", image='" + image + '\'' +
+                '}';
     }
 }

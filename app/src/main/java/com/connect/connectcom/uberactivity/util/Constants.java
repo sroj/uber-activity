@@ -1,4 +1,4 @@
-package com.connect.connectcom.uberactivity;
+package com.connect.connectcom.uberactivity.util;
 
 import java.text.SimpleDateFormat;
 
@@ -33,34 +33,20 @@ public class Constants {
     public static final int HASH_NOT_FOUND = 30;
 
     // Broadcast Intents
-    public static final String ACTION_RTL_STATE_CHANGED =
-            "com.connect" + ".ACTION_RTL_STATE_CHANGED";
-    public static final String ACTION_FIRST_ACTIVITY_ARRIVED =
-            "com.connect" + ".ACTION_FIRST_ACTIVITY_ARRIVED";
-    public static final String CONNECTIONS_UPDATED_BROADCAST =
-            "com.connect" + ".CONNECTIONS_UPDATED_BROADCAST";
-    public static final String IMPORT_CONNECTIONS_FIRST_PAGE_COMPLETE_BROADCAST =
-            "com.connect" + ".IMPORT_CONNECTIONS_FIRST_PAGE_COMPLETE_BROADCAST";
-    public static final String IMPORT_CONNECTIONS_COMPLETE_BROADCAST =
-            "com.connect" + ".IMPORT_CONNECTIONS_COMPLETE_BROADCAST";
-    public static final String NO_CONNECTIVITY_BROADCAST =
-            "com.connect" + ".NO_CONNECTIVITY_BROADCAST";
-    public static final String CONNECTIVITY_RESTORED_BROADCAST =
-            "com.connect" + ".CONNECTIVITY_RESTORED_BROADCAST";
-    public static final String BADGE_COUNT_UPDATED_BROADCAST =
-            "com.connect" + ".BADGE_COUNT_UPDATED_BROADCAST";
-    public static final String SOURCE_SYNC_FINISHED_BROADCAST =
-            "com.connect" + ".SOURCE_SYNC_FINISHED_BROADCAST";
-    public static final String SOURCE_SYNC_ERROR_BROADCAST =
-            "com.connect" + ".SOURCE_SYNC_ERROR_BROADCAST";
-    public static final String INITIAL_IMPORT_STARTED_BROADCAST =
-            "com.connect" + ".INITIAL_IMPORT_STARTED_BROADCAST";
-    public static final String NO_CONNECTIONS_BROADCAST =
-            "com.connect" + ".NO_CONNECTIONS_BROADCAST";
-    public static final String ACTION_CONNECTION_UPDATED =
-            "com.connect.connectcom" + ".ACTION_CONNECTION_UPDATED";
-    public static final String HOME_CITY_UPDATED =
-            "com.connect.connectcom" + ".HOME_CITY_UPDATED";
+    public static final String ACTION_RTL_STATE_CHANGED = "com.connect" + ".ACTION_RTL_STATE_CHANGED";
+    public static final String ACTION_FIRST_ACTIVITY_ARRIVED = "com.connect" + ".ACTION_FIRST_ACTIVITY_ARRIVED";
+    public static final String CONNECTIONS_UPDATED_BROADCAST = "com.connect" + ".CONNECTIONS_UPDATED_BROADCAST";
+    public static final String IMPORT_CONNECTIONS_FIRST_PAGE_COMPLETE_BROADCAST = "com.connect" + ".IMPORT_CONNECTIONS_FIRST_PAGE_COMPLETE_BROADCAST";
+    public static final String IMPORT_CONNECTIONS_COMPLETE_BROADCAST = "com.connect" + ".IMPORT_CONNECTIONS_COMPLETE_BROADCAST";
+    public static final String NO_CONNECTIVITY_BROADCAST = "com.connect" + ".NO_CONNECTIVITY_BROADCAST";
+    public static final String CONNECTIVITY_RESTORED_BROADCAST = "com.connect" + ".CONNECTIVITY_RESTORED_BROADCAST";
+    public static final String BADGE_COUNT_UPDATED_BROADCAST = "com.connect" + ".BADGE_COUNT_UPDATED_BROADCAST";
+    public static final String SOURCE_SYNC_FINISHED_BROADCAST = "com.connect" + ".SOURCE_SYNC_FINISHED_BROADCAST";
+    public static final String SOURCE_SYNC_ERROR_BROADCAST = "com.connect" + ".SOURCE_SYNC_ERROR_BROADCAST";
+    public static final String INITIAL_IMPORT_STARTED_BROADCAST = "com.connect" + ".INITIAL_IMPORT_STARTED_BROADCAST";
+    public static final String NO_CONNECTIONS_BROADCAST = "com.connect" + ".NO_CONNECTIONS_BROADCAST";
+    public static final String ACTION_CONNECTION_UPDATED = "com.connect.connectcom" + ".ACTION_CONNECTION_UPDATED";
+    public static final String HOME_CITY_UPDATED = "com.connect.connectcom" + ".HOME_CITY_UPDATED";
 
     // Pusher Events
     public static final String EVENT_MESSAGE_CREATED = "message.created";
@@ -122,10 +108,8 @@ public class Constants {
     public static final String AMAZON_AWS_ACCOUNT_ID = "242641382134";
     public static final String COGNITO_IDENTITY_POOL = "us-east-1:36b449d5-58d4-49b2-a238-4d27191f1e85";
     public static final String AMAZON_S3_BUCKET = "connect.uploads";
-    public static final String AMAZON_AUTH_ROLE_ARN =
-            "arn:aws:iam::242641382134:role/Cognito_ConnectiOSS3Auth_DefaultRole";
-    public static final String AMAZON_UNAUTH_ROLE_ARN =
-            "arn:aws:iam::242641382134:role/Cognito_ConnectiOSS3Unauth_DefaultRole";
+    public static final String AMAZON_AUTH_ROLE_ARN = "arn:aws:iam::242641382134:role/Cognito_ConnectiOSS3Auth_DefaultRole";
+    public static final String AMAZON_UNAUTH_ROLE_ARN = "arn:aws:iam::242641382134:role/Cognito_ConnectiOSS3Unauth_DefaultRole";
 
     // Uber
     public static final String AUTHORIZATION_HEADER_NAME = "Authorization";
@@ -138,11 +122,9 @@ public class Constants {
     // Google Plus
     public static final String READ_CONTACTS_SCOPE = "https://www.google.com/m8/feeds/";
     public static final String SERVER_CLIENT_ID = "251253567538.apps.googleusercontent.com";
-    public static final String SERVER_AUTH_SCOPE = String.format(
-            "oauth2:server:client_id:%s:api_scope:%s",
-            SERVER_CLIENT_ID,
-            READ_CONTACTS_SCOPE
-    );
+    public static final String SERVER_AUTH_SCOPE = String.format("oauth2:server:client_id:%s:api_scope:%s",
+                                                                 SERVER_CLIENT_ID,
+                                                                 READ_CONTACTS_SCOPE);
 
     // Misc.
     public static final String PLATFORM_ANDROID = "android";

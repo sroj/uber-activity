@@ -42,8 +42,7 @@ public class Legs {
                 totalDuration = obj.getString("text");
             }
 
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 

@@ -6,8 +6,15 @@ import java.util.List;
 
 public class Prices {
 
-    @SerializedName("prices") private List<Price> prices;
+    @SerializedName("prices")
+    private List<Price> prices;
     private boolean ok = true;
+
+    public static Prices buildErrorObject() {
+        Prices prices = new Prices();
+        prices.ok = false;
+        return prices;
+    }
 
     public List<Price> getPrices() {
         return prices;
@@ -21,16 +28,10 @@ public class Prices {
         return ok;
     }
 
-    public static Prices buildErrorObject() {
-        Prices prices = new Prices();
-        prices.ok = false;
-        return prices;
-    }
-
     @Override
     public String toString() {
         return "Prices{" +
-               "prices=" + prices +
-               '}';
+                "prices=" + prices +
+                '}';
     }
 }

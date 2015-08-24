@@ -1,10 +1,12 @@
-package com.connect.connectcom.uberactivity;
+package com.connect.connectcom.uberactivity.location;
 
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+
+import com.connect.connectcom.uberactivity.util.Ln;
 
 /**
  * Created by bsechter on 2014/10/23.
@@ -17,8 +19,7 @@ import android.os.Bundle;
  * For Geocoder: http://stackoverflow.com/questions/472313/android-reverse-geocoding-getfromlocation
  */
 
-public class GPSTracker
-        implements LocationListener {
+public class GPSTracker implements LocationListener {
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; //10 meters
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60; // 1 minute
     private final Context mContext;
@@ -49,12 +50,10 @@ public class GPSTracker
 
                 //First get location from Network Provider
                 if (isNetworkEnabled) {
-                    locationManager.requestLocationUpdates(
-                            LocationManager.NETWORK_PROVIDER,
-                            MIN_TIME_BW_UPDATES,
-                            MIN_DISTANCE_CHANGE_FOR_UPDATES,
-                            this
-                    );
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
+                                                           MIN_TIME_BW_UPDATES,
+                                                           MIN_DISTANCE_CHANGE_FOR_UPDATES,
+                                                           this);
 
                     if (locationManager != null) {
                         location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -65,12 +64,10 @@ public class GPSTracker
                 //if GPS Enabled get lat/long using GPS Services
                 if (isGPSEnabled) {
                     if (location == null) {
-                        locationManager.requestLocationUpdates(
-                                LocationManager.GPS_PROVIDER,
-                                MIN_TIME_BW_UPDATES,
-                                MIN_DISTANCE_CHANGE_FOR_UPDATES,
-                                this
-                        );
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                                                               MIN_TIME_BW_UPDATES,
+                                                               MIN_DISTANCE_CHANGE_FOR_UPDATES,
+                                                               this);
 
                         if (locationManager != null) {
                             location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -81,10 +78,7 @@ public class GPSTracker
             }
         } catch (Exception e) {
             //e.printStackTrace();
-            Ln.e(
-                    e,
-                    "Impossible to connect to LocationManager"
-            );
+            Ln.e(e, "Impossible to connect to LocationManager");
             location = new Location("");
             updateGPSCoordinates();
         }
@@ -140,11 +134,7 @@ public class GPSTracker
     }
 
     @Override
-    public void onStatusChanged(
-            String provider,
-            int status,
-            Bundle extras
-    ) {
+    public void onStatusChanged(String provider, int status, Bundle extras) {
     }
 
     @Override
