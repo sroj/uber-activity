@@ -1,6 +1,7 @@
 package com.connect.connectcom.uberactivity.module;
 
 import com.connect.connectcom.uberactivity.BuildConfig;
+import com.connect.connectcom.uberactivity.backend.GoogleDirectionsAPI;
 import com.connect.connectcom.uberactivity.backend.UberAPI;
 import com.connect.connectcom.uberactivity.location.FusedLocationManager;
 import com.connect.connectcom.uberactivity.presenter.MainPresenter;
@@ -47,8 +48,21 @@ public final class BaseActivityModule {
 
     @Provides
     @Singleton
+    @Named("GoogleDirectionsAPIAdapter")
+    RestAdapter provideGoogleDirectionsAPIAdapter() {
+        return new RestAdapter.Builder().setEndpoint(BuildConfig.GOOGLE_DIRECTIONS_API_ENDPOINT).setLogLevel(RestAdapter.LogLevel.FULL).build();
+    }
+
+    @Provides
+    @Singleton
     UberAPI provideUberAPI(@Named("UberAPIAdapter") RestAdapter restAdapter) {
         return restAdapter.create(UberAPI.class);
+    }
+
+    @Provides
+    @Singleton
+    GoogleDirectionsAPI provideGoogleDirectionsAPI(@Named("GoogleDirectionsAPIAdapter") RestAdapter restAdapter) {
+        return restAdapter.create(GoogleDirectionsAPI.class);
     }
 
     @Provides

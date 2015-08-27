@@ -26,7 +26,7 @@ import com.connect.connectcom.uberactivity.BuildConfig;
 import com.connect.connectcom.uberactivity.R;
 import com.connect.connectcom.uberactivity.model.UberRide;
 import com.connect.connectcom.uberactivity.presenter.UberRidesPresenter;
-import com.connect.connectcom.uberactivity.routing.Navigator;
+import com.connect.connectcom.uberactivity.routing.MapRouteDrawer;
 import com.connect.connectcom.uberactivity.util.Ln;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -84,6 +84,8 @@ public class UberRidesViewImpl extends UberRidesPresenter.UberRidesView implemen
     // **** UI and Business logic ****
     @Inject
     UberRidesPresenter uberRidesPresenter;
+    @Inject
+    MapRouteDrawer mapRouteDrawer;
 
     private GoogleMap googleMap;
     private ArrayList<UberRide> uberRides;
@@ -281,10 +283,11 @@ public class UberRidesViewImpl extends UberRidesPresenter.UberRidesView implemen
                           double dropOffLongitude) {
         if (googleMap != null && !isRouteDrawn && markers.size() > 1) {
             isRouteDrawn = true;
-            Navigator navigator = new Navigator(googleMap,
-                                                new LatLng(pickupLatitude, pickupLongitude),
-                                                new LatLng(dropOffLatitude, dropOffLongitude));
-            navigator.findDirections(false);
+
+            mapRouteDrawer.drawRoute(googleMap,
+                                     new LatLng(pickupLatitude, pickupLongitude),
+                                     new LatLng(dropOffLatitude, dropOffLongitude));
+
             attemptUpdateMapCamera();
         }
     }

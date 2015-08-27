@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 23
     buildToolsVersion "22.0.1"
     defaultConfig {
         applicationId "com.connect.connectcom.uberactivity"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "0.1"
     }
@@ -16,12 +16,14 @@ android {
             buildConfigField "String", "UBER_SERVER_KEY", "\"Token 43D50cxGHmu_kMgI5cepLl5CA_vRJHXXuVjCwKK8\""
             buildConfigField "String", "UBER_CLIENT_ID", "\"gMHswdaf4BwRiqu1vUC4jooIFoPRiysF\""
             buildConfigField "String", "UBER_ENDPOINT", "\"https://api.uber.com\""
+            buildConfigField "String", "GOOGLE_DIRECTIONS_API_ENDPOINT", "\"https://maps.googleapis.com\""
 
         }
         release {
             buildConfigField "String", "UBER_SERVER_KEY", "\"Token 43D50cxGHmu_kMgI5cepLl5CA_vRJHXXuVjCwKK8\""
             buildConfigField "String", "UBER_CLIENT_ID", "\"gMHswdaf4BwRiqu1vUC4jooIFoPRiysF\""
             buildConfigField "String", "UBER_ENDPOINT", "\"https://api.uber.com\""
+            buildConfigField "String", "GOOGLE_DIRECTIONS_API_ENDPOINT", "\"https://maps.googleapis.com\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -36,8 +38,8 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.android.support:design:22.2.1'
+    compile 'com.android.support:appcompat-v7:23.0.0'
+    compile 'com.android.support:design:23.0.0'
     compile 'com.squareup.dagger:dagger:1.2.2'
     provided 'com.squareup.dagger:dagger-compiler:1.2.2'
     compile 'com.jakewharton:butterknife:7.0.1'
@@ -51,6 +53,7 @@ dependencies {
     compile 'com.squareup.mortar:mortar-dagger1:0.19'
     compile 'com.squareup.flow:flow:0.12'
     compile 'frankiesardo:icepick:3.1.0'
+    compile 'com.google.maps.android:android-maps-utils:0.4'
     provided 'frankiesardo:icepick-processor:3.1.0'
     testCompile 'org.robolectric:robolectric:3.0'
     testCompile 'junit:junit:4.10'
